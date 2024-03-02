@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <!-- Agrega el enlace a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="miApp">
+    <div class="container mt-5" ng-controller="MiControlador">
+        <form id="miFormulario">
+            <div class="row">
+                <div class="form-group col-6">
+                    <label for="hora">Hora:</label>
+                    <select class="form-control" id="hora" name="hora">
+                        <option value="1">1</option>
+                        <option value="23">23</option>
+                    </select>
+                </div>
+                <div class="form-group col-6">
+                    <label for="minutos">Minutos:</label>
+                    <select class="form-control" id="minutos" name="minutos">
+                        <option value="1">1</option>
+                        <option value="59">59</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="peso">Peso:</label>
+                <input type="number" class="form-control" id="peso" name="peso" min="0" step="0.01">
+            </div>
+            <!-- Cambiamos el botón de submit por un botón normal -->
+            <button type="button" class="btn btn-primary" onclick="enviarFormulario()">Enviar</button>
+        </form>
+    </div>
+
+    <!-- Agrega el enlace a Bootstrap JS (opcional, pero necesario para algunos componentes) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
