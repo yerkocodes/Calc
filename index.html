@@ -8,37 +8,118 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 </head>
-<body ng-app="miApp">
-    <div class="container mt-5" ng-controller="MiControlador">
-        <form id="miFormulario">
+<body ng-app="miApp" ng-controller="MiControlador">
+    <div class="container mt-5">
+        <!--{{miFormulario.flexRadioDefault}}-->
+        <form id="miFormulario" name="miFormulario">
             <div class="row">
-                <div class="form-group col-6">
-                    <label for="hora">Hora:</label>
-                    <select class="form-control" id="hora" name="hora">
-                        <option value="1">1</option>
-                        <option value="23">23</option>
-                    </select>
+                <div class="form-check col-6">
+                    <input class="form-check-input" 
+						ng-click="lectura()" 
+						type="radio" 
+						name="flexRadioDefault" 
+						value="500" 
+						id="flexRadioDefault1" 
+						ng-model="formulario.proporcion"
+                        >
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      1/0.5
+                    </label>
+                  </div>
+                  <div class="form-check col-6">
+                    <input class="form-check-input" 
+						ng-click="lectura()" 
+						type="radio" 
+						name="flexRadioDefault" 
+						value="800" 
+						id="flexRadioDefault2" 
+						ng-model="formulario.proporcion"
+                        >
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      1/0.8
+                    </label>
+                  </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="inputHora">Hora:</label>
+                    <div class="input-group">
+                        <input type="number" 
+                            class="form-control" 
+                            id="inputHora" 
+                            ng-model="formulario.hora"
+                            ng-change="prueba(formulario.hora)"
+                            name="hora"
+                            > <!--ng-pattern="/^(0?\d|1\d|2[0-4])$/"-->
+                        <div class="input-group-append">
+                            <span class="input-group-text">hrs</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group col-6">
-                    <label for="minutos">Minutos:</label>
-                    <select class="form-control" id="minutos" name="minutos">
-                        <option value="1">1</option>
-                        <option value="59">59</option>
-                    </select>
+                <div class="form-group col-md-6">
+                    <label for="inputMinutos">Minutos:</label>
+                    <div class="input-group">
+                        <input type="number" 
+							class="form-control" 
+							id="inputMinutos"
+                            ng-model="formulario.minutos"
+							name="minutos" 
+							min="0" 
+							max="59" 
+							value="0">
+                        <div class="input-group-append">
+                            <span class="input-group-text">min</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="peso">Peso:</label>
-                <input type="number" class="form-control" id="peso" name="peso" min="0" step="0.01">
+            <div class="form-group row">
+                <label for="inputPeso" class="col-12">Peso:</label>
+                <div class="col-md-5">
+                    <div class="input-group">
+                        <input type="number" 
+							class="form-control" 
+							id="inputPeso"
+                            ng-model="formulario.kilos"
+							name="peso" 
+							min="0" 
+							value="0">
+                        <div class="input-group-append">
+                            <span class="input-group-text">kg</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="input-group">
+                        <input type="number" 
+							class="form-control" 
+							id="inputPesoGr"
+                            ng-model="formulario.gramos"
+							name="pesoGr" 
+							min="0" 
+							value="0">
+                        <div class="input-group-append">
+                            <span class="input-group-text">gr</span>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- Cambiamos el botón de submit por un botón normal -->
-            <button type="button" class="btn btn-primary" onclick="enviarFormulario()">Enviar</button>
+            <button type="button" class="btn btn-primary" ng-click="enviarFormulario()">Enviar</button>
         </form>
     </div>
+
+    <div>
+        <h3>Maltodextrina: {{infoFinal.maltodextrina}}</h3>
+        <h3>Fructosa: {{infoFinal.fructosa}}</h3>
+        <h3>Total: {{infoFinal.totalAConsumir}}</h3>
+    </div>
+    
 
     <!-- Agrega el enlace a Bootstrap JS (opcional, pero necesario para algunos componentes) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 </html>
